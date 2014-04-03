@@ -6,6 +6,8 @@ public class ArithmeticOperationsFactory {
 
 		if (sign.equals("+")) {
 			return new Addition();
+		}else if (sign.equals("-")) {
+			return new Subtraction();
 		}
 
 		throw new UnsupportedOperationException();
