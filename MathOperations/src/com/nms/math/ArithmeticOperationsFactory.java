@@ -7,6 +7,7 @@ public class ArithmeticOperationsFactory {
 		if (sign.equals("+")) {
 			return new Addition();
 		}else if (sign.equals("-")) {
+			//FIXME: Subtraction class is missing
 			return new Subtraction();
 		}
 
