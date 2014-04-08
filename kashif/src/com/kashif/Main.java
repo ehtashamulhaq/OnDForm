@@ -5,3 +5,4 @@ public class Main {
 		System.out.println("Kashif Nazar, I am nice man");
 	}
 }
+//End of the Main class 
