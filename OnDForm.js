@@ -2,12 +2,12 @@
  * Created by ehtashamul.haq on 2/28/14.
 
  */
-
-
+var myRef;
 function OnDForm () {
 
     this.ElementsMap = new Object();
     this.Ont2HtmlMap = new Object();
+    this.prefix = "";
 
     this.Ont2HtmlMap["button"]={tag:"input", type:"button"};
     this.Ont2HtmlMap["checkbox"]={tag:"input", type:"checkbox"};
@@ -75,9 +75,51 @@ function OnDForm () {
     };
 
 OnDForm.prototype.setElementProperty =function (name, property, value) {
+    if(this.ElementsMap[name][property] == undefined || !this.ElementsMap[name][property]){
         this.ElementsMap[name][property] = value ;
+    }
+    else{
+        if(!(this.ElementsMap[name][property] instanceof Array)){
+            var temp = this.ElementsMap[name][property];
+            this.ElementsMap[name][property] = new Array();
+            this.ElementsMap[name][property][0] = temp;
+        }
+        this.ElementsMap[name][property][this.ElementsMap[name][property].length] = value ;
+    }
+
     };
 
+sortMembers = function (obj) {
+    if(!obj){
+        return;
+    }
+    var keys = [];
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            keys.push(key);
+        }
+    }
+    keys.sort (
+        function(a,b){
+            if(obj[b].order && obj[a].order){
+                return obj[b].order - obj[a].order;
+            }else{
+                return 0;
+            }
+        }
+    );
+    $.each(obj, function( index, value ) {
+        if(value instanceof Array){
+        value.sort(function(a,b){
+            return b.order - a.order
+        }
+        );
+        }else{
+            sortMembers(value);
+        }
+    });
+
+}
 OnDForm.prototype.getElement = function (name) {
         return this.ElementsMap[name];
     };
@@ -90,12 +132,17 @@ OnDForm.prototype.createForm = function (target) {
         if(!target){
             target = document.body;
         }
-    };
 
+    var ele = myRef.getElement(this.prefix + "#text-name");
+    alert(ele.label);
+    for (var m in myRef.ElementsMap){
+        console.log( "test: " + myRef.ElementsMap[m]);
+    }
+};
 OnDForm.prototype.readOntology = function (ontology) {
 
         var parser = new N3Parser();
-        var myRef = new OnDForm();
+        myRef = this;
         $.get(ontology, function(data) {
             //console.log(data);
 
@@ -103,36 +150,38 @@ OnDForm.prototype.readOntology = function (ontology) {
                 function (error, triple) {
                     if (triple){
 
-                        //console.log(triple.subject,'|', triple.predicate,'|', triple.object, '.');
+                        console.log(triple.subject,'|', triple.predicate,'|', triple.object, '.');
 
+                        var obj = triple.object.substr(triple.object.lastIndexOf("#")+1);
                         if(triple.predicate ==  'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'){
-                            var obj = triple.object.substr(triple.object.lastIndexOf("#")+1);
-
 
                             if(myRef.Ont2HtmlMap[obj]){
-                                console.log("subject: " + triple.subject);
-                                console.log("object: " + triple.object);
+                                myRef.addElement(triple.subject, obj);
                             }
-
-                            myRef.addElement(triple.subject, triple.object);
+                            if(myRef.prefix == ""  && "Ontology" === obj){
+                                myRef.prefix = triple.subject;
+                                console.log(triple.subject);
+                            }
 
                         }else{
 
-                            myRef.setElementProperty(triple.subject,triple.predicate,triple.object)
+                            if(myRef.getElement(triple.subject)){
+                                var property = triple.predicate.substr(triple.predicate.lastIndexOf("#")+1);
+                                myRef.setElementProperty(triple.subject,property,triple.object);
+                            }
                         }
 
                     }
-                    else
-                        console.log("# That's it, folks!")
+                    else{
+                        console.log("# That's it, folks!");
+                        //sortMembers(myRef.ElementsMap);
+                        myRef.createForm('target');
+                    }
+
 
                 });
 
         });
-
-        alert(myRef.getElement("http://www.w3.org/1999/02/22-rdf-syntax-ns#text-name"));
-        for (var m in myRef.ElementsMap){
-            console.log( "test: " + myRef.ElementsMap[m]);
-        }
     };
 
 
