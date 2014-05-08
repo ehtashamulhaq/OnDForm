@@ -182,6 +182,16 @@
 
 
 
+###  http://thesis.12mscsehaq.seecs.edu.pk#function
+
+:function rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain :script ;
+          
+          rdfs:range xsd:string .
+
+
+
 ###  http://thesis.12mscsehaq.seecs.edu.pk#height
 
 :height rdf:type owl:DatatypeProperty ;
@@ -944,7 +954,13 @@
 ###  http://thesis.12mscsehaq.seecs.edu.pk#clickHandler
 
 :clickHandler rdf:type :script ,
-                       owl:NamedIndividual .
+                       owl:NamedIndividual ;
+              
+              :function """function displayTimeStamp (e){
+ 
+    var time = new Date();
+    alert(\"clicked at:\" + time.getMilliseconds());
+]""" .
 
 
 
@@ -982,7 +998,15 @@
 :fieldset-cake rdf:type :fieldset ,
                         owl:NamedIndividual ;
                
-               :id "cake" .
+               :id "cake" ;
+               
+               :order "3" ;
+               
+               :member :number-layers ,
+                       :number-servings ,
+                       :select-cake-flavor ,
+                       :select-frosting-flavor ,
+                       :text-cake-message .
 
 
 
@@ -1010,7 +1034,11 @@
 :fieldset-other rdf:type :fieldset ,
                          owl:NamedIndividual ;
                 
-                :id "other" .
+                :id "other" ;
+                
+                :order "2" ;
+                
+                :member :textarea-comments .
 
 
 
@@ -1023,7 +1051,9 @@
                   
                   :member :fieldset-cake ,
                           :fieldset-contact ,
-                          :fieldset-other .
+                          :fieldset-other ,
+                          :reset-form ,
+                          :submit-order .
 
 
 
@@ -1197,7 +1227,9 @@
               
               :value "Submit Order" ;
               
-              :id "submitButton" .
+              :id "submitButton" ;
+              
+              :hasEvent :clickEvent .
 
 
 
@@ -1234,9 +1266,9 @@
                    
                    :id "cakeMessage" ;
                    
-                   :list "#messages" ;
+                   :label "Cake Message" ;
                    
-                   :label "Cake Message" .
+                   :list "#datalist-messages" .
 
 
 
