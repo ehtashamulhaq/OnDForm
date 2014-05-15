@@ -12,6 +12,7 @@
 
 
 
+
 #################################################################
 #
 #    Individuals
@@ -23,21 +24,8 @@
 
 :clickEvent rdf:type :onclick ,
                      owl:NamedIndividual ;
-
-            :handler :clickHandler .
-
-
-
-###  http://thesis.12mscsehaq.seecs.edu.pk#clickHandler
-
-:clickHandler rdf:type :script ,
-                       owl:NamedIndividual ;
-
-              :function """function displayTimeStamp (e){
-
-    var time = new Date();
-    alert(\"clicked at:\" + time.getMilliseconds());
-]""" .
+            
+            :handler "displayTimeStamp" .
 
 
 
@@ -45,7 +33,7 @@
 
 :datalist-messages rdf:type :datalist ,
                             owl:NamedIndividual ;
-
+                   
                    :member :option-message1 ,
                            :option-message2 ,
                            :option-message3 ,
@@ -57,15 +45,15 @@
 
 :email-emailAddress rdf:type :email ,
                              owl:NamedIndividual ;
-
+                    
                     :id "emailAddress" ;
-
+                    
                     :placeholder "john.doe@microsoft.com" ;
-
+                    
                     :order "6" ;
-
+                    
                     :label "Email Address" ;
-
+                    
                     :hasEvent :clickEvent .
 
 
@@ -74,11 +62,11 @@
 
 :fieldset-cake rdf:type :fieldset ,
                         owl:NamedIndividual ;
-
+               
                :id "cake" ;
-
+               
                :order "3" ;
-
+               
                :member :number-layers ,
                        :number-servings ,
                        :select-cake-flavor ,
@@ -91,11 +79,11 @@
 
 :fieldset-contact rdf:type :fieldset ,
                            owl:NamedIndividual ;
-
+                  
                   :id "contact" ;
-
+                  
                   :order "1" ;
-
+                  
                   :member :email-emailAddress ,
                           :number-zipCode ,
                           :select-state ,
@@ -110,11 +98,11 @@
 
 :fieldset-other rdf:type :fieldset ,
                          owl:NamedIndividual ;
-
+                
                 :id "other" ;
-
+                
                 :order "2" ;
-
+                
                 :member :textarea-comments .
 
 
@@ -123,9 +111,9 @@
 
 :form-Sample_Form rdf:type :form ,
                            owl:NamedIndividual ;
-
+                  
                   :id "cakeForm" ;
-
+                  
                   :member :fieldset-cake ,
                           :fieldset-contact ,
                           :fieldset-other ,
@@ -137,7 +125,7 @@
 ###  http://thesis.12mscsehaq.seecs.edu.pk#legend-Cake-Options
 
 :legend-Cake-Options rdf:type owl:NamedIndividual ;
-
+                     
                      :value "Cake Options" .
 
 
@@ -146,9 +134,9 @@
 
 :legend-Contact_Person rdf:type :legend ,
                                 owl:NamedIndividual ;
-
+                       
                        :order "1" ;
-
+                       
                        :value "Contact Person" .
 
 
@@ -157,15 +145,15 @@
 
 :number-layers rdf:type :number ,
                         owl:NamedIndividual ;
-
+               
                :maximum "3" ;
-
+               
                :label "Number of layers" ;
-
+               
                :minimum "1" ;
-
+               
                :id "layers" ;
-
+               
                :order "2" .
 
 
@@ -174,15 +162,15 @@
 
 :number-servings rdf:type :number ,
                           owl:NamedIndividual ;
-
+                 
                  :maximum "100" ;
-
+                 
                  :id "servings" ;
-
+                 
                  :label "Number of Servings" ;
-
+                 
                  :order "1" ;
-
+                 
                  :minimum "10" .
 
 
@@ -191,13 +179,13 @@
 
 :number-zipCode rdf:type :number ,
                          owl:NamedIndividual ;
-
+                
                 :title "Enter a 5 digit zip code" ;
-
+                
                 :order "5" ;
-
+                
                 :label "Zip Code" ;
-
+                
                 :placeholder "98052" .
 
 
@@ -206,7 +194,7 @@
 
 :option-message1 rdf:type :option ,
                           owl:NamedIndividual ;
-
+                 
                  :value "Happy Birthday!" .
 
 
@@ -215,7 +203,7 @@
 
 :option-message2 rdf:type :option ,
                           owl:NamedIndividual ;
-
+                 
                  :value "Happy Birthday Susan!" .
 
 
@@ -224,7 +212,7 @@
 
 :option-message3 rdf:type :option ,
                           owl:NamedIndividual ;
-
+                 
                  :value "Congratulations Graduate!" .
 
 
@@ -233,7 +221,7 @@
 
 :option-message4 rdf:type :option ,
                           owl:NamedIndividual ;
-
+                 
                  :value "Welcome Home!" .
 
 
@@ -242,10 +230,19 @@
 
 :reset-form rdf:type :reset ,
                      owl:NamedIndividual ;
-
+            
             :value "Reset Form" ;
-
+            
             :id "resetButton" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#script-cake
+
+:script-cake rdf:type <http://thesis.12mscsehaq.seecs.edu.pk#text/javascript> ,
+                      owl:NamedIndividual ;
+
+             :src "cake.js".
 
 
 
@@ -253,17 +250,17 @@
 
 :select-cake-flavor rdf:type :select ,
                              owl:NamedIndividual ;
-
+                    
                     :list """{'choclate':'Choclate','vanilla':'Vanilla','marble':'Marble','red':'Red Velvet','banana':'Banana'}
 
 
 
 """ ;
-
+                    
                     :label "Cake Flavor" ;
-
+                    
                     :id "cakeFlavor" ;
-
+                    
                     :order "3" .
 
 
@@ -272,14 +269,14 @@
 
 :select-frosting-flavor rdf:type :select ,
                                  owl:NamedIndividual ;
-
+                        
                         :id "frostingFlavor" ;
-
+                        
                         :list """{'choclate':'Choclate','vanilla':'Vanilla'}
 """ ;
-
+                        
                         :order "4" ;
-
+                        
                         :label "Frosting Flavor" .
 
 
@@ -288,11 +285,11 @@
 
 :select-state rdf:type :select ,
                        owl:NamedIndividual ;
-
+              
               :label "State" ;
-
+              
               :order "4" ;
-
+              
               :list "{'AL':'Alabama','AK':'Alaska','AZ':'Arizona','AR':'Arkansas','CA':'California','CO':'Colorado','CT':'Connecticut','DC':'District of Columbia','DE':'Delaware','FL':'Florida','GA':'Georgia','HI':'Hawaii','ID':'Idaho','IL':'Illinois','IN':'Indiana','IA':'Iowa','KS':'Kansas','KY':'Kentucky','LA':'Louisiana','ME':'Maine','MD':'Maryland','MA':'Massachusetts','MI':'Michigan','MN':'Minnesota','MS':'Mississippi','MO':'Missouri','MT':'Montana','NE':'Nebraska','NV':'Nevada','NH':'New Hampshire','NJ':'New Jersey','NM':'New Mexico','NY':'New York','NC':'North Carolina','ND':'North Dakota','OH':'Ohio','OK':'Oklahoma','OR':'Oregon','PA':'Pennsylvania','PR':'Puerto Rico','RI':'Rhode Island','SC':'South Carolina','SD':'South Dakota','TN':'Tennessee','TX':'Texas','UT':'Utah','VT':'Vermont','VA':'Virginia','WA':'Washington','WV':'West Virginia','WI':'Wisconsin','WY':'Wyoming'}" .
 
 
@@ -301,11 +298,11 @@
 
 :submit-order rdf:type :submit ,
                        owl:NamedIndividual ;
-
+              
               :value "Submit Order" ;
-
+              
               :id "submitButton" ;
-
+              
               :hasEvent :clickEvent .
 
 
@@ -314,11 +311,11 @@
 
 :tel-telephoneNumber rdf:type :tel ,
                               owl:NamedIndividual ;
-
+                     
                      :label "Telephone number" ;
-
+                     
                      :placeholder "(425) 333-4444" ;
-
+                     
                      :order "7" .
 
 
@@ -327,11 +324,11 @@
 
 :text-address rdf:type :text ,
                        owl:NamedIndividual ;
-
+              
               :placeholder "1 Microsoft Way" ;
-
+              
               :label "Address" ;
-
+              
               :order "2" .
 
 
@@ -340,11 +337,11 @@
 
 :text-cake-message rdf:type :text ,
                             owl:NamedIndividual ;
-
+                   
                    :id "cakeMessage" ;
-
+                   
                    :label "Cake Message" ;
-
+                   
                    :list "#datalist-messages" .
 
 
@@ -353,11 +350,11 @@
 
 :text-city rdf:type :text ,
                     owl:NamedIndividual ;
-
+           
            :order "3" ;
-
+           
            :label "City" ;
-
+           
            :placeholder "Redmond" .
 
 
@@ -366,11 +363,11 @@
 
 :text-name rdf:type :text ,
                     owl:NamedIndividual ;
-
+           
            :label "Name" ;
-
+           
            :order "1" ;
-
+           
            :placeholder "John Doe" .
 
 
@@ -379,9 +376,9 @@
 
 :textarea-comments rdf:type :textarea ,
                             owl:NamedIndividual ;
-
+                   
                    :id "comments" ;
-
+                   
                    :label "Other Special Instructions" .
 
 

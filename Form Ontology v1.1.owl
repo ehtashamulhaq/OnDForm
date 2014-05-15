@@ -18,17 +18,6 @@
 #################################################################
 
 
-###  http://thesis.12mscsehaq.seecs.edu.pk#handler
-
-:handler rdf:type owl:FunctionalProperty ,
-                  owl:ObjectProperty ;
-         
-         rdfs:domain :Event ;
-         
-         rdfs:range :script .
-
-
-
 ###  http://thesis.12mscsehaq.seecs.edu.pk#hasEvent
 
 :hasEvent rdf:type owl:ObjectProperty ;
@@ -182,13 +171,13 @@
 
 
 
-###  http://thesis.12mscsehaq.seecs.edu.pk#function
+###  http://thesis.12mscsehaq.seecs.edu.pk#handler
 
-:function rdf:type owl:DatatypeProperty ;
-          
-          rdfs:domain :script ;
-          
-          rdfs:range xsd:string .
+:handler rdf:type owl:DatatypeProperty ;
+         
+         rdfs:domain :Event ;
+         
+         rdfs:range xsd:string .
 
 
 
@@ -358,13 +347,7 @@
      
      rdfs:comment "Specifies the URL of an image" ;
      
-     rdfs:range xsd:string ;
-     
-     rdfs:domain [ rdf:type owl:Class ;
-                   owl:unionOf ( :image
-                                 :script
-                               )
-                 ] .
+     rdfs:range xsd:string .
 
 
 
@@ -411,16 +394,6 @@
        rdfs:comment "Specifies extra information about an element" ;
        
        rdfs:domain :HTMLElement .
-
-
-
-###  http://thesis.12mscsehaq.seecs.edu.pk#type
-
-:type rdf:type owl:DatatypeProperty ;
-      
-      rdfs:domain :script ;
-      
-      rdfs:range xsd:string .
 
 
 
@@ -875,14 +848,6 @@
 
 
 
-###  http://thesis.12mscsehaq.seecs.edu.pk#script
-
-:script rdf:type owl:Class ;
-        
-        rdfs:comment "script class to refer the javascript function" .
-
-
-
 ###  http://thesis.12mscsehaq.seecs.edu.pk#select
 
 :select rdf:type owl:Class ;
@@ -912,6 +877,12 @@
 :text rdf:type owl:Class ;
       
       rdfs:subClassOf :Input .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#text/javascript
+
+<http://thesis.12mscsehaq.seecs.edu.pk#text/javascript> rdf:type owl:Class .
 
 
 
@@ -961,16 +932,7 @@
 :clickEvent rdf:type :onclick ,
                      owl:NamedIndividual ;
             
-            :handler :clickHandler .
-
-
-
-###  http://thesis.12mscsehaq.seecs.edu.pk#clickHandler
-
-:clickHandler rdf:type :script ,
-                       owl:NamedIndividual ;
-              
-              :function "displayTimeStamp" .
+            :handler "displayTimeStamp" .
 
 
 
@@ -997,9 +959,7 @@
                     
                     :order "6" ;
                     
-                    :label "Email Address" ;
-                    
-                    :hasEvent :clickEvent .
+                    :label "Email Address" .
 
 
 
@@ -1184,12 +1144,10 @@
 
 ###  http://thesis.12mscsehaq.seecs.edu.pk#script-cake
 
-:script-cake rdf:type :script ,
+:script-cake rdf:type <http://thesis.12mscsehaq.seecs.edu.pk#text/javascript> ,
                       owl:NamedIndividual ;
              
-             :src "cake.js" ;
-             
-             :type "text/javascript" .
+             :src "cake.js" .
 
 
 

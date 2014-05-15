@@ -7,7 +7,7 @@ function OnDForm() {
 
     this.ElementsMap = new Object();
     this.Ont2HtmlMap = new Object();
-    this.ObjectProperties = new Array();
+
     this.prefix = "";
 
     this.Ont2HtmlMap["button"] = {tag: "input", type: "button"};
@@ -26,27 +26,27 @@ function OnDForm() {
     this.Ont2HtmlMap["legend"] = {tag: "legend"};
     this.Ont2HtmlMap["month"] = {tag: "input", type: "month"};
     this.Ont2HtmlMap["number"] = {tag: "input", type: "number"};
-    this.Ont2HtmlMap["onblur"] = {tag: "event"};
-    this.Ont2HtmlMap["onchange"] = {tag: "event"};
-    this.Ont2HtmlMap["onclick"] = {tag: "event"};
-    this.Ont2HtmlMap["oncontextmenu"] = {tag: "event"};
-    this.Ont2HtmlMap["ondblclick"] = {tag: "event"};
-    this.Ont2HtmlMap["onfocus"] = {tag: "event"};
-    this.Ont2HtmlMap["onformchange"] = {tag: "event"};
-    this.Ont2HtmlMap["onforminput"] = {tag: "event"};
-    this.Ont2HtmlMap["oninput"] = {tag: "event"};
-    this.Ont2HtmlMap["oninvalid"] = {tag: "event"};
-    this.Ont2HtmlMap["onkeydown"] = {tag: "event"};
-    this.Ont2HtmlMap["onkeypress"] = {tag: "event"};
-    this.Ont2HtmlMap["onkeyup"] = {tag: "event"};
-    this.Ont2HtmlMap["onmousedown"] = {tag: "event"};
-    this.Ont2HtmlMap["onmousemove"] = {tag: "event"};
-    this.Ont2HtmlMap["onmouseout"] = {tag: "event"};
-    this.Ont2HtmlMap["onmouseover"] = {tag: "event"};
-    this.Ont2HtmlMap["onmouseup"] = {tag: "event"};
-    this.Ont2HtmlMap["onreset"] = {tag: "event"};
-    this.Ont2HtmlMap["onselect"] = {tag: "event"};
-    this.Ont2HtmlMap["onsubmit"] = {tag: "event"};
+    this.Ont2HtmlMap["onblur"] = {tag: "blur", type:"event"};
+    this.Ont2HtmlMap["onchange"] = {tag: "change", type:"event"};
+    this.Ont2HtmlMap["onclick"] = {tag: "click", type:"event"};
+    this.Ont2HtmlMap["oncontextmenu"] = {tag: "contextmenu", type:"event"};
+    this.Ont2HtmlMap["ondblclick"] = {tag: "dblclick", type:"event"};
+    this.Ont2HtmlMap["onfocus"] = {tag: "focus", type:"event"};
+    this.Ont2HtmlMap["onformchange"] = {tag: "formchange", type:"event"};
+    this.Ont2HtmlMap["onforminput"] = {tag: "forminput", type:"event"};
+    this.Ont2HtmlMap["oninput"] = {tag: "input", type:"event"};
+    this.Ont2HtmlMap["oninvalid"] = {tag: "invalid", type:"event"};
+    this.Ont2HtmlMap["onkeydown"] = {tag: "keydown", type:"event"};
+    this.Ont2HtmlMap["onkeypress"] = {tag: "keypress", type:"event"};
+    this.Ont2HtmlMap["onkeyup"] = {tag: "keyup", type:"event"};
+    this.Ont2HtmlMap["onmousedown"] = {tag: "mousedown", type:"event"};
+    this.Ont2HtmlMap["onmousemove"] = {tag: "mousemove", type:"event"};
+    this.Ont2HtmlMap["onmouseout"] = {tag: "mouseout", type:"event"};
+    this.Ont2HtmlMap["onmouseover"] = {tag: "mouseover", type:"event"};
+    this.Ont2HtmlMap["onmouseup"] = {tag: "mouseup", type:"event"};
+    this.Ont2HtmlMap["onreset"] = {tag: "reset", type:"event"};
+    this.Ont2HtmlMap["onselect"] = {tag: "select", type:"event"};
+    this.Ont2HtmlMap["onsubmit"] = {tag: "submit", type:"event"};
     this.Ont2HtmlMap["optgroup"] = {tag: "optgroup"};
     this.Ont2HtmlMap["option"] = {tag: "option"};
     this.Ont2HtmlMap["output"] = {tag: "output"};
@@ -55,7 +55,7 @@ function OnDForm() {
     this.Ont2HtmlMap["range"] = {tag: "input", type: "range"};
     this.Ont2HtmlMap["reset"] = {tag: "input", type: "reset"};
     this.Ont2HtmlMap["search"] = {tag: "input", type: "search"};
-    this.Ont2HtmlMap["script"] = {tag: "script"};
+    this.Ont2HtmlMap["text/javascript"] = {tag: "script"};
     this.Ont2HtmlMap["select"] = {tag: "select"};
     this.Ont2HtmlMap["submit"] = {tag: "input", type: "submit"};
     this.Ont2HtmlMap["tel"] = {tag: "input", type: "tel"};
@@ -99,21 +99,7 @@ sortMembers = function (obj) {
     if (!obj) {
         return;
     }
-    /*var keys = [];
-     for (var key in obj) {
-     if (obj.hasOwnProperty(key)) {
-     keys.push(key);
-     }
-     }
-     keys.sort (
-     function(a,b){
-     if(obj[b].order && obj[a].order){
-     return obj[b].order - obj[a].order;
-     }else{
-     return 0;
-     }
-     }
-     );*/
+
     $.each(obj, function (index, value) {
         if (value instanceof Array) {
             value.sort(function (a, b) {
@@ -148,11 +134,34 @@ OnDForm.prototype.createForm = function (target) {
     }
 
     var ele = myRef.getElement(this.prefix + "#text-name");
-    for (var m in myRef.ElementsMap) {
-        var element = myRef.ElementsMap[m];
+    var keys = [];
+    for (var key in myRef.ElementsMap) {
+        if (myRef.ElementsMap.hasOwnProperty(key)) {
+            keys.push(key);
+        }
+    }
+    keys.sort (
+        function(a,b){
+            if(myRef.ElementsMap[a].type  == "text/javascript"){
+                return -1;
+            }else if(myRef.ElementsMap[b].type  == "text/javascript"){
+                return 1;
+            }else{
+                return 0;
+            }
+        }
+    );
+    for (var k in keys) {
+        var element = myRef.ElementsMap[keys[k]];
         if (element.type == "form") {
             var myform = generateForm(element);
             target.append(myform);
+        }else if(element.type == "text/javascript"){
+            var scriptElement = $('<script/>');
+            for (var key in element) {
+                scriptElement.attr(key, element[key]);
+            }
+            $('head').append(scriptElement);
         }
 
     }
@@ -177,15 +186,16 @@ function generateForm(element) {
                 } else if (key == "member") {
                     if (element[key] instanceof Array) {
                         $.each(element[key], function (index, value) {
-                            if(myRef.ElementsMap[value].tag = "event")
-                            jqElement.append(generateForm(myRef.ElementsMap[value]))
+
+                                jqElement.append(generateForm(myRef.ElementsMap[value]));
                         });
                     } else {
                         jqElement.append(generateForm(myRef.ElementsMap[element[key]]));
                     }
                 }else if (key == "hasEvent") {
-                    var handle = myRef.ElementsMap[element[key]];
-                    jqElement.on("submit", handle);
+                    var eventElement = myRef.ElementsMap[element[key]];
+                    var fn = window[eventElement.handler];
+                    jqElement.bind(myRef.Ont2HtmlMap[eventElement.type].tag, fn);
 
                 }  else if (jqElement.is("select") && key == "list") {
                     var strList = element[key].replace(/['"]/g, '\"');
