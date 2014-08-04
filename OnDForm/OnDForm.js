@@ -2,15 +2,7 @@
  * Created by ehtashamul.haq on 2/28/14.
 
  */
-
-var RDF_PREFIX = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-    RDF_NIL    = RDF_PREFIX + 'nil',
-    RDF_FIRST  = RDF_PREFIX + 'first',
-    RDF_REST   = RDF_PREFIX + 'rest',
-    RDF_TYPE   = RDF_PREFIX + 'type';
-
 var myRef;
-var store;
 function OnDForm() {
 
     this.ElementsMap = new Object();
@@ -202,31 +194,8 @@ function generateForm(element) {
                     }
                 }else if (key == "hasEvent") {
                     var eventElement = myRef.ElementsMap[element[key]];
-
-                    var handler =  store.find(eventElement.hasHandler, myRef.prefix +'#doOperation');
-                    $.each(handler, function (index, value) {
-                        var funcName = value.object.substr(value.object.lastIndexOf("#") + 1);
-                        var funcTypeTriples = store.find(value.object, RDF_TYPE);
-                        var funcType = "";
-                        var targetElement = "";
-                            $.each(funcTypeTriples, function (i, t) {
-                                if(myRef.prefix === t.object.substr(0, myRef.prefix.length)){
-                                    funcType = t.object.substr(t.object.lastIndexOf("#") + 1);
-                                }
-                        });
-
-
-                            $("head").append('<script> function ' + funcName + '(){ \n'
-                            + 'var subjectName = myRef.prefix +\'#' + funcName + '\';\n'
-                            + funcType + '(subjectName);' + '}</script>');
-
-                        var fn = window[funcName];
-                        jqElement.bind(myRef.Ont2HtmlMap[eventElement.type].tag, fn);
-
-                    });
-
-
-
+                    var fn = window[eventElement.handler];
+                    jqElement.bind(myRef.Ont2HtmlMap[eventElement.type].tag, fn);
 
                 }  else if (jqElement.is("select") && key == "list") {
                     var strList = element[key].replace(/['"]/g, '\"');
@@ -255,7 +224,6 @@ function generateForm(element) {
 OnDForm.prototype.readOntology = function (ontology) {
 
     var parser = new N3Parser();
-    store = new N3Store();
     myRef = this;
     $.get(ontology, function (data) {
         //console.log(data);
@@ -265,9 +233,9 @@ OnDForm.prototype.readOntology = function (ontology) {
                 if (triple) {
 
                     console.log(triple.subject, '|', triple.predicate, '|', triple.object, '.');
-                    store.addTriple(triple);
+
                     var obj = triple.object.substr(triple.object.lastIndexOf("#") + 1);
-                    if (triple.predicate == RDF_TYPE) {
+                    if (triple.predicate == 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type') {
 
                         if (myRef.Ont2HtmlMap[obj]) {
                             myRef.addElement(triple.subject, obj);
@@ -296,56 +264,7 @@ OnDForm.prototype.readOntology = function (ontology) {
 };
 
 
-function addElement(subjectName){
-    var elementTriple = store.find(subjectName, myRef.prefix +'#targetElement');
-    if(elementTriple){
-        elementTriple = elementTriple[0];
-    }
-    var elementName = elementTriple.object;
-    if($('[name=\''+elementName+'\']').length > 0){
-        removeElement(subjectName);
-    }else{
-        var memberOf = store.find(subjectName, myRef.prefix +'#memberOf');
-        var memberOfElement = $('[name=\''+memberOf[0].object+'\']');
-        var element = generateForm(myRef.getElement(elementName));
-        memberOfElement.append(element);
-        element = $('[name=\''+elementName+'\']');
-        $("<label>" + element.attr("label") + "</label>").insertBefore(element);
-    }
-
-}
 
 
-function removeElement(subjectName){
-    var elementTriple = store.find(subjectName, myRef.prefix +'#targetElement');
-    if(elementTriple){
-        elementTriple = elementTriple[0];
-    }
-    var elementName = elementTriple.object;
 
-    var element = $('[name=\''+elementName+'\']');
-    if(element.length > 0){
-        var label = element.attr("label");
-        if(label){
-            var labelElement = element.closest('label='+label);
-            labelElement.remove();
-        }
 
-        element.remove();
-    }
-}
-
-function changeCss(subjectName){
-    var elementId, memberOf, cssMap;
-
-}
-
-function changeData(subjectName){
-    var elementId, memberOf, dataMap;
-
-}
-
-function changeState(subjectName){
-   var elementId, memberOf, stateMap;
-
-}

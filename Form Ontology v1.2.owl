@@ -18,6 +18,26 @@
 #################################################################
 
 
+###  http://thesis.12mscsehaq.seecs.edu.pk#doOperation
+
+:doOperation rdf:type owl:ObjectProperty ;
+             
+             rdfs:domain :EventHandler ;
+             
+             rdfs:range :EventHandlerOperation .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#executeJavascript
+
+:executeJavascript rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:domain :EventHandler ;
+                   
+                   rdfs:range <http://thesis.12mscsehaq.seecs.edu.pk#text/javascript> .
+
+
+
 ###  http://thesis.12mscsehaq.seecs.edu.pk#hasEvent
 
 :hasEvent rdf:type owl:ObjectProperty ;
@@ -25,6 +45,16 @@
           rdfs:range :Event ;
           
           rdfs:domain :HTMLElement .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#hasHandler
+
+:hasHandler rdf:type owl:ObjectProperty ;
+            
+            rdfs:domain :Event ;
+            
+            rdfs:range :EventHandler .
 
 
 
@@ -41,6 +71,38 @@
                                     :optgroup
                                   )
                     ] .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#memberOf
+
+:memberOf rdf:type owl:FunctionalProperty ,
+                   owl:ObjectProperty ;
+          
+          owl:inverseOf :member ;
+          
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( :EventHandlerOperation
+                                      :HTMLElement
+                                    )
+                      ] ;
+          
+          rdfs:range [ rdf:type owl:Class ;
+                       owl:unionOf ( :fieldset
+                                     :form
+                                     :optgroup
+                                   )
+                     ] .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#targetElement
+
+:targetElement rdf:type owl:ObjectProperty ;
+               
+               rdfs:domain :EventHandlerOperation ;
+               
+               rdfs:range :HTMLElement .
 
 
 
@@ -171,16 +233,6 @@
 
 
 
-###  http://thesis.12mscsehaq.seecs.edu.pk#handler
-
-:handler rdf:type owl:DatatypeProperty ;
-         
-         rdfs:domain :Event ;
-         
-         rdfs:range xsd:string .
-
-
-
 ###  http://thesis.12mscsehaq.seecs.edu.pk#height
 
 :height rdf:type owl:DatatypeProperty ;
@@ -303,7 +355,11 @@
 
 :order rdf:type owl:DatatypeProperty ;
        
-       rdfs:comment "to oreder the fields at same level on the form. Default order of fields specified in the ontology" .
+       rdfs:comment "to oreder the fields at same level on the form. Default order of fields specified in the ontology" ;
+       
+       rdfs:domain :HTMLElement ;
+       
+       rdfs:range xsd:double .
 
 
 
@@ -314,6 +370,26 @@
              rdfs:domain :FormElement ;
              
              rdfs:range xsd:string .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#propertyName
+
+:propertyName rdf:type owl:DatatypeProperty ;
+              
+              rdfs:domain :ChangeElement ;
+              
+              rdfs:range xsd:string .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#propertyValue
+
+:propertyValue rdf:type owl:DatatypeProperty ;
+               
+               rdfs:domain :ChangeElement ;
+               
+               rdfs:range xsd:string .
 
 
 
@@ -346,6 +422,8 @@
 :src rdf:type owl:DatatypeProperty ;
      
      rdfs:comment "Specifies the URL of an image" ;
+     
+     rdfs:domain :image ;
      
      rdfs:range xsd:string .
 
@@ -440,9 +518,35 @@
 
 
 
+###  http://thesis.12mscsehaq.seecs.edu.pk#ChangeElement
+
+:ChangeElement rdf:type owl:Class ;
+               
+               rdfs:subClassOf :EventHandlerOperation .
+
+
+
 ###  http://thesis.12mscsehaq.seecs.edu.pk#Event
 
 :Event rdf:type owl:Class .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#EventHandler
+
+:EventHandler rdf:type owl:Class .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#EventHandlerOperation
+
+:EventHandlerOperation rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                         owl:onProperty :targetElement ;
+                                         owl:onClass :HTMLElement ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                       ] .
 
 
 
@@ -494,11 +598,43 @@
 
 
 
+###  http://thesis.12mscsehaq.seecs.edu.pk#addElement
+
+:addElement rdf:type owl:Class ;
+            
+            rdfs:subClassOf :EventHandlerOperation .
+
+
+
 ###  http://thesis.12mscsehaq.seecs.edu.pk#button
 
 :button rdf:type owl:Class ;
         
         rdfs:subClassOf :Action .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#changeCss
+
+:changeCss rdf:type owl:Class ;
+           
+           rdfs:subClassOf :ChangeElement .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#changeData
+
+:changeData rdf:type owl:Class ;
+            
+            rdfs:subClassOf :ChangeElement .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#changeState
+
+:changeState rdf:type owl:Class ;
+             
+             rdfs:subClassOf :ChangeElement .
 
 
 
@@ -840,6 +976,14 @@
 
 
 
+###  http://thesis.12mscsehaq.seecs.edu.pk#removeElement
+
+:removeElement rdf:type owl:Class ;
+               
+               rdfs:subClassOf :EventHandlerOperation .
+
+
+
 ###  http://thesis.12mscsehaq.seecs.edu.pk#reset
 
 :reset rdf:type owl:Class ;
@@ -927,12 +1071,33 @@
 #################################################################
 
 
+###  http://thesis.12mscsehaq.seecs.edu.pk#addCityElement
+
+:addCityElement rdf:type :addElement ,
+                         owl:NamedIndividual ;
+                
+                :memberOf :fieldset-contact ;
+                
+                :targetElement :select-city .
+
+
+
 ###  http://thesis.12mscsehaq.seecs.edu.pk#clickEvent
 
 :clickEvent rdf:type :onclick ,
                      owl:NamedIndividual ;
             
-            :handler "displayTimeStamp" .
+            :hasHandler :clickEventHandler .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#clickEventHandler
+
+:clickEventHandler rdf:type :EventHandler ,
+                            owl:NamedIndividual ;
+                   
+                   :doOperation :addCityElement ,
+                                :updateCityElementData .
 
 
 
@@ -1172,6 +1337,19 @@
 
 
 
+###  http://thesis.12mscsehaq.seecs.edu.pk#select-city
+
+:select-city rdf:type :select ,
+                      owl:NamedIndividual ;
+             
+             :id "city" ;
+             
+             :order "4.5" ;
+             
+             :label "City" .
+
+
+
 ###  http://thesis.12mscsehaq.seecs.edu.pk#select-frosting-flavor
 
 :select-frosting-flavor rdf:type :select ,
@@ -1197,7 +1375,9 @@
               
               :order "4" ;
               
-              :list "{'AL':'Alabama','AK':'Alaska','AZ':'Arizona','AR':'Arkansas','CA':'California','CO':'Colorado','CT':'Connecticut','DC':'District of Columbia','DE':'Delaware','FL':'Florida','GA':'Georgia','HI':'Hawaii','ID':'Idaho','IL':'Illinois','IN':'Indiana','IA':'Iowa','KS':'Kansas','KY':'Kentucky','LA':'Louisiana','ME':'Maine','MD':'Maryland','MA':'Massachusetts','MI':'Michigan','MN':'Minnesota','MS':'Mississippi','MO':'Missouri','MT':'Montana','NE':'Nebraska','NV':'Nevada','NH':'New Hampshire','NJ':'New Jersey','NM':'New Mexico','NY':'New York','NC':'North Carolina','ND':'North Dakota','OH':'Ohio','OK':'Oklahoma','OR':'Oregon','PA':'Pennsylvania','PR':'Puerto Rico','RI':'Rhode Island','SC':'South Carolina','SD':'South Dakota','TN':'Tennessee','TX':'Texas','UT':'Utah','VT':'Vermont','VA':'Virginia','WA':'Washington','WV':'West Virginia','WI':'Wisconsin','WY':'Wyoming'}" .
+              :list "{'AL':'Alabama','AK':'Alaska','AZ':'Arizona','AR':'Arkansas','CA':'California','CO':'Colorado','CT':'Connecticut','DC':'District of Columbia','DE':'Delaware','FL':'Florida','GA':'Georgia','HI':'Hawaii','ID':'Idaho','IL':'Illinois','IN':'Indiana','IA':'Iowa','KS':'Kansas','KY':'Kentucky','LA':'Louisiana','ME':'Maine','MD':'Maryland','MA':'Massachusetts','MI':'Michigan','MN':'Minnesota','MS':'Mississippi','MO':'Missouri','MT':'Montana','NE':'Nebraska','NV':'Nevada','NH':'New Hampshire','NJ':'New Jersey','NM':'New Mexico','NY':'New York','NC':'North Carolina','ND':'North Dakota','OH':'Ohio','OK':'Oklahoma','OR':'Oregon','PA':'Pennsylvania','PR':'Puerto Rico','RI':'Rhode Island','SC':'South Carolina','SD':'South Dakota','TN':'Tennessee','TX':'Texas','UT':'Utah','VT':'Vermont','VA':'Virginia','WA':'Washington','WV':'West Virginia','WI':'Wisconsin','WY':'Wyoming'}" ;
+              
+              :hasEvent :clickEvent .
 
 
 
@@ -1208,9 +1388,7 @@
               
               :value "Submit Order" ;
               
-              :id "submitButton" ;
-              
-              :hasEvent :clickEvent .
+              :id "submitButton" .
 
 
 
@@ -1290,6 +1468,21 @@
 
 
 
+###  http://thesis.12mscsehaq.seecs.edu.pk#updateCityElementData
+
+:updateCityElementData rdf:type :changeData ,
+                                owl:NamedIndividual ;
+                       
+                       :propertyName "list" ;
+                       
+                       :propertyValue "{'LHR':'Lahore','ISB':'Islamabad','KHI':'Karachi'}" ;
+                       
+                       :targetElement :select-city .
+
+
+
+[ :doOperation :clickEventHandler
+] .
 
 ###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
 
