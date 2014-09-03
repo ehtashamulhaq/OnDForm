@@ -4,10 +4,10 @@
  */
 
 var RDF_PREFIX = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-    RDF_NIL    = RDF_PREFIX + 'nil',
-    RDF_FIRST  = RDF_PREFIX + 'first',
-    RDF_REST   = RDF_PREFIX + 'rest',
-    RDF_TYPE   = RDF_PREFIX + 'type';
+    RDF_NIL = RDF_PREFIX + 'nil',
+    RDF_FIRST = RDF_PREFIX + 'first',
+    RDF_REST = RDF_PREFIX + 'rest',
+    RDF_TYPE = RDF_PREFIX + 'type';
 
 var myRef;
 var store;
@@ -34,27 +34,27 @@ function OnDForm() {
     this.Ont2HtmlMap["legend"] = {tag: "legend"};
     this.Ont2HtmlMap["month"] = {tag: "input", type: "month"};
     this.Ont2HtmlMap["number"] = {tag: "input", type: "number"};
-    this.Ont2HtmlMap["onblur"] = {tag: "blur", type:"event"};
-    this.Ont2HtmlMap["onchange"] = {tag: "change", type:"event"};
-    this.Ont2HtmlMap["onclick"] = {tag: "click", type:"event"};
-    this.Ont2HtmlMap["oncontextmenu"] = {tag: "contextmenu", type:"event"};
-    this.Ont2HtmlMap["ondblclick"] = {tag: "dblclick", type:"event"};
-    this.Ont2HtmlMap["onfocus"] = {tag: "focus", type:"event"};
-    this.Ont2HtmlMap["onformchange"] = {tag: "formchange", type:"event"};
-    this.Ont2HtmlMap["onforminput"] = {tag: "forminput", type:"event"};
-    this.Ont2HtmlMap["oninput"] = {tag: "input", type:"event"};
-    this.Ont2HtmlMap["oninvalid"] = {tag: "invalid", type:"event"};
-    this.Ont2HtmlMap["onkeydown"] = {tag: "keydown", type:"event"};
-    this.Ont2HtmlMap["onkeypress"] = {tag: "keypress", type:"event"};
-    this.Ont2HtmlMap["onkeyup"] = {tag: "keyup", type:"event"};
-    this.Ont2HtmlMap["onmousedown"] = {tag: "mousedown", type:"event"};
-    this.Ont2HtmlMap["onmousemove"] = {tag: "mousemove", type:"event"};
-    this.Ont2HtmlMap["onmouseout"] = {tag: "mouseout", type:"event"};
-    this.Ont2HtmlMap["onmouseover"] = {tag: "mouseover", type:"event"};
-    this.Ont2HtmlMap["onmouseup"] = {tag: "mouseup", type:"event"};
-    this.Ont2HtmlMap["onreset"] = {tag: "reset", type:"event"};
-    this.Ont2HtmlMap["onselect"] = {tag: "select", type:"event"};
-    this.Ont2HtmlMap["onsubmit"] = {tag: "submit", type:"event"};
+    this.Ont2HtmlMap["onblur"] = {tag: "blur", type: "event"};
+    this.Ont2HtmlMap["onchange"] = {tag: "change", type: "event"};
+    this.Ont2HtmlMap["onclick"] = {tag: "click", type: "event"};
+    this.Ont2HtmlMap["oncontextmenu"] = {tag: "contextmenu", type: "event"};
+    this.Ont2HtmlMap["ondblclick"] = {tag: "dblclick", type: "event"};
+    this.Ont2HtmlMap["onfocus"] = {tag: "focus", type: "event"};
+    this.Ont2HtmlMap["onformchange"] = {tag: "formchange", type: "event"};
+    this.Ont2HtmlMap["onforminput"] = {tag: "forminput", type: "event"};
+    this.Ont2HtmlMap["oninput"] = {tag: "input", type: "event"};
+    this.Ont2HtmlMap["oninvalid"] = {tag: "invalid", type: "event"};
+    this.Ont2HtmlMap["onkeydown"] = {tag: "keydown", type: "event"};
+    this.Ont2HtmlMap["onkeypress"] = {tag: "keypress", type: "event"};
+    this.Ont2HtmlMap["onkeyup"] = {tag: "keyup", type: "event"};
+    this.Ont2HtmlMap["onmousedown"] = {tag: "mousedown", type: "event"};
+    this.Ont2HtmlMap["onmousemove"] = {tag: "mousemove", type: "event"};
+    this.Ont2HtmlMap["onmouseout"] = {tag: "mouseout", type: "event"};
+    this.Ont2HtmlMap["onmouseover"] = {tag: "mouseover", type: "event"};
+    this.Ont2HtmlMap["onmouseup"] = {tag: "mouseup", type: "event"};
+    this.Ont2HtmlMap["onreset"] = {tag: "reset", type: "event"};
+    this.Ont2HtmlMap["onselect"] = {tag: "select", type: "event"};
+    this.Ont2HtmlMap["onsubmit"] = {tag: "submit", type: "event"};
     this.Ont2HtmlMap["optgroup"] = {tag: "optgroup"};
     this.Ont2HtmlMap["option"] = {tag: "option"};
     this.Ont2HtmlMap["output"] = {tag: "output"};
@@ -148,13 +148,13 @@ OnDForm.prototype.createForm = function (target) {
             keys.push(key);
         }
     }
-    keys.sort (
-        function(a,b){
-            if(myRef.ElementsMap[a].type  == "text/javascript"){
+    keys.sort(
+        function (a, b) {
+            if (myRef.ElementsMap[a].type == "text/javascript") {
                 return -1;
-            }else if(myRef.ElementsMap[b].type  == "text/javascript"){
+            } else if (myRef.ElementsMap[b].type == "text/javascript") {
                 return 1;
-            }else{
+            } else {
                 return 0;
             }
         }
@@ -164,7 +164,7 @@ OnDForm.prototype.createForm = function (target) {
         if (element.type == "form") {
             var myform = generateForm(element);
             target.append(myform);
-        }else if(element.type == "text/javascript"){
+        } else if (element.type == "text/javascript") {
             var scriptElement = $('<script/>');
             for (var key in element) {
                 scriptElement.attr(key, element[key]);
@@ -195,28 +195,28 @@ function generateForm(element) {
                     if (element[key] instanceof Array) {
                         $.each(element[key], function (index, value) {
 
-                                jqElement.append(generateForm(myRef.ElementsMap[value]));
+                            jqElement.append(generateForm(myRef.ElementsMap[value]));
                         });
                     } else {
                         jqElement.append(generateForm(myRef.ElementsMap[element[key]]));
                     }
-                }else if (key == "hasEvent") {
+                } else if (key == "hasEvent") {
                     var eventElement = myRef.ElementsMap[element[key]];
 
-                    var handler =  store.find(eventElement.hasHandler, myRef.prefix +'#doOperation');
+                    var handler = store.find(eventElement.hasHandler, myRef.prefix + '#doOperation');
                     $.each(handler, function (index, value) {
                         var funcName = value.object.substr(value.object.lastIndexOf("#") + 1);
                         var funcTypeTriples = store.find(value.object, RDF_TYPE);
                         var funcType = "";
                         var targetElement = "";
-                            $.each(funcTypeTriples, function (i, t) {
-                                if(myRef.prefix === t.object.substr(0, myRef.prefix.length)){
-                                    funcType = t.object.substr(t.object.lastIndexOf("#") + 1);
-                                }
+                        $.each(funcTypeTriples, function (i, t) {
+                            if (myRef.prefix === t.object.substr(0, myRef.prefix.length)) {
+                                funcType = t.object.substr(t.object.lastIndexOf("#") + 1);
+                            }
                         });
 
 
-                            $("head").append('<script> function ' + funcName + '(){ \n'
+                        $("head").append('<script> function ' + funcName + '(){ \n'
                             + 'var subjectName = myRef.prefix +\'#' + funcName + '\';\n'
                             + funcType + '(subjectName);' + '}</script>');
 
@@ -226,9 +226,7 @@ function generateForm(element) {
                     });
 
 
-
-
-                }  else if (jqElement.is("select") && key == "list") {
+                } else if (jqElement.is("select") && key == "list") {
                     var strList = element[key].replace(/['"]/g, '\"');
                     var jsonList = $.parseJSON(strList);
                     $.each(jsonList, function (index, value) {
@@ -295,39 +293,47 @@ OnDForm.prototype.readOntology = function (ontology) {
     });
 };
 
-
-function addElement(subjectName){
-    var elementTriple = store.find(subjectName, myRef.prefix +'#targetElement');
-    if(elementTriple){
+function getElementNameFromSubject(subjectName) {
+    var elementTriple = store.find(subjectName, myRef.prefix + '#targetElement');
+    if (elementTriple) {
         elementTriple = elementTriple[0];
     }
-    var elementName = elementTriple.object;
-    if($('[name=\''+elementName+'\']').length > 0){
+
+    return elementTriple.object;
+}
+
+function getElementByName(elementName) {
+
+    return $('[name=\'' + elementName + '\']');
+}
+
+function addElement(subjectName) {
+
+    var elementName = getElementNameFromSubject(subjectName);
+
+    if (getElementByName(elementName).length > 0) {
         removeElement(subjectName);
-    }else{
-        var memberOf = store.find(subjectName, myRef.prefix +'#memberOf');
-        var memberOfElement = $('[name=\''+memberOf[0].object+'\']');
+    } else {
+        var memberOf = store.find(subjectName, myRef.prefix + '#memberOf');
+        var memberOfElement = $('[name=\'' + memberOf[0].object + '\']');
         var element = generateForm(myRef.getElement(elementName));
         memberOfElement.append(element);
-        element = $('[name=\''+elementName+'\']');
+        element = getElementByName(elementName);
+        ;
         $("<label>" + element.attr("label") + "</label>").insertBefore(element);
     }
 
 }
 
+function removeElement(subjectName) {
 
-function removeElement(subjectName){
-    var elementTriple = store.find(subjectName, myRef.prefix +'#targetElement');
-    if(elementTriple){
-        elementTriple = elementTriple[0];
-    }
-    var elementName = elementTriple.object;
+    var elementName = getElementNameFromSubject(subjectName);
 
-    var element = $('[name=\''+elementName+'\']');
-    if(element.length > 0){
+    var element = getElementByName(elementName);
+    if (element.length > 0) {
         var label = element.attr("label");
-        if(label){
-            var labelElement = element.closest('label='+label);
+        if (label) {
+            var labelElement = element.closest('label=' + label);
             labelElement.remove();
         }
 
@@ -335,17 +341,36 @@ function removeElement(subjectName){
     }
 }
 
-function changeCss(subjectName){
+function changeCss(subjectName) {
+    var elementName = getElementNameFromSubject(subjectName);
+    var element = getElementByName(elementName);
     var elementId, memberOf, cssMap;
 
 }
 
-function changeData(subjectName){
+function changeData(subjectName) {
+    var elementName = getElementNameFromSubject(subjectName);
+    var element = getElementByName(elementName);
+
+    var propertyName = store.find(subjectName, myRef.prefix + '#propertyName');
+    var propertyValue = store.find(subjectName, myRef.prefix + '#propertyValue')
+
+    alert(propertyName.object);
+
+    if (element.is("select") && key == "list") {
+        var strList = element[key].replace(/['"]/g, '\"');
+        var jsonList = $.parseJSON(strList);
+        $.each(jsonList, function (index, value) {
+            jqElement.append($("<option/>").attr("value", index).append(value));
+        });
+    }
     var elementId, memberOf, dataMap;
 
 }
 
-function changeState(subjectName){
-   var elementId, memberOf, stateMap;
+function changeState(subjectName) {
+    var elementName = getElementNameFromSubject(subjectName);
+    var element = getElementByName(elementName);
+    var elementId, memberOf, stateMap;
 
 }

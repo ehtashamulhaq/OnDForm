@@ -15,6 +15,8 @@
 
 
 
+
+
 #################################################################
 #
 #    Individuals
@@ -424,7 +426,9 @@
 :updateCityElementData rdf:type :changeData ,
                                 owl:NamedIndividual ;
                        
-                       :list "{'ISB':'Islamabad','RWP':'Rawalpindi','LHR':'Lahore','MUL':'Multan'}" ;
+                       :propertyName "list" ;
+                       
+                       :propertyValue "{'LHR':'Lahore','ISB':'Islamabad','KHI':'Karachi'}" ;
                        
                        :targetElement :select-city .
 
