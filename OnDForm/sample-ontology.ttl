@@ -1,0 +1,388 @@
+@prefix : <http://thesis.12mscsehaq.seecs.edu.pk#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://thesis.12mscsehaq.seecs.edu.pk> .
+
+<http://thesis.12mscsehaq.seecs.edu.pk> rdf:type owl:Ontology ;
+                                        
+                                        owl:backwardCompatibleWith ""^^xsd:string .
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#clickEvent
+
+:clickEvent rdf:type :onclick ,
+                     owl:NamedIndividual ;
+            
+            :handler "displayTimeStamp" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#datalist-messages
+
+:datalist-messages rdf:type :datalist ,
+                            owl:NamedIndividual ;
+                   
+                   :member :option-message1 ,
+                           :option-message2 ,
+                           :option-message3 ,
+                           :option-message4 .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#email-emailAddress
+
+:email-emailAddress rdf:type :email ,
+                             owl:NamedIndividual ;
+                    
+                    :id "emailAddress" ;
+                    
+                    :placeholder "john.doe@microsoft.com" ;
+                    
+                    :order "6" ;
+                    
+                    :label "Email Address" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#fieldset-cake
+
+:fieldset-cake rdf:type :fieldset ,
+                        owl:NamedIndividual ;
+               
+               :id "cake" ;
+               
+               :order "2" ;
+               
+               :member :number-layers ,
+                       :number-servings ,
+                       :select-cake-flavor ,
+                       :select-frosting-flavor ,
+                       :text-cake-message .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#fieldset-contact
+
+:fieldset-contact rdf:type :fieldset ,
+                           owl:NamedIndividual ;
+                  
+                  :id "contact" ;
+                  
+                  :order "1" ;
+                  
+                  :member :email-emailAddress ,
+                          :number-zipCode ,
+                          :select-state ,
+                          :tel-telephoneNumber ,
+                          :text-address ,
+                          :text-city ,
+                          :text-name .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#fieldset-other
+
+:fieldset-other rdf:type :fieldset ,
+                         owl:NamedIndividual ;
+                
+                :id "other" ;
+                
+                :order "3" ;
+                
+                :member :textarea-comments .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#form-Sample_Form
+
+:form-Sample_Form rdf:type :form ,
+                           owl:NamedIndividual ;
+                  
+                  :label "Contoso Bakery Cake Order Form" ;
+                  
+                  :id "cakeForm" ;
+                  
+                  :member :fieldset-cake ,
+                          :fieldset-contact ,
+                          :fieldset-other ,
+                          :reset-form ,
+                          :submit-order .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#legend-Cake-Options
+
+:legend-Cake-Options rdf:type owl:NamedIndividual ;
+                     
+                     :value "Cake Options" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#legend-Contact_Person
+
+:legend-Contact_Person rdf:type :legend ,
+                                owl:NamedIndividual ;
+                       
+                       :order "1" ;
+                       
+                       :value "Contact Person" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#number-layers
+
+:number-layers rdf:type :number ,
+                        owl:NamedIndividual ;
+               
+               :maximum "3" ;
+               
+               :label "Number of layers" ;
+               
+               :minimum "1" ;
+               
+               :id "layers" ;
+               
+               :order "2" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#number-servings
+
+:number-servings rdf:type :number ,
+                          owl:NamedIndividual ;
+                 
+                 :maximum "100" ;
+                 
+                 :id "servings" ;
+                 
+                 :label "Number of Servings" ;
+                 
+                 :order "1" ;
+                 
+                 :minimum "10" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#number-zipCode
+
+:number-zipCode rdf:type :number ,
+                         owl:NamedIndividual ;
+                
+                :title "Enter a 5 digit zip code" ;
+                
+                :order "5" ;
+                
+                :label "Zip Code" ;
+                
+                :placeholder "98052" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#option-message1
+
+:option-message1 rdf:type :option ,
+                          owl:NamedIndividual ;
+                 
+                 :value "Happy Birthday!" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#option-message2
+
+:option-message2 rdf:type :option ,
+                          owl:NamedIndividual ;
+                 
+                 :value "Happy Birthday Susan!" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#option-message3
+
+:option-message3 rdf:type :option ,
+                          owl:NamedIndividual ;
+                 
+                 :value "Congratulations Graduate!" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#option-message4
+
+:option-message4 rdf:type :option ,
+                          owl:NamedIndividual ;
+                 
+                 :value "Welcome Home!" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#reset-form
+
+:reset-form rdf:type :reset ,
+                     owl:NamedIndividual ;
+            
+            :value "Reset Form" ;
+            
+            :id "resetButton" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#script-cake
+
+:script-cake rdf:type <http://thesis.12mscsehaq.seecs.edu.pk#text/javascript> ,
+                      owl:NamedIndividual ;
+             
+             :src "cake.js" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#select-cake-flavor
+
+:select-cake-flavor rdf:type :select ,
+                             owl:NamedIndividual ;
+                    
+                    :list """{'choclate':'Choclate','vanilla':'Vanilla','marble':'Marble','red':'Red Velvet','banana':'Banana'}
+
+
+
+""" ;
+                    
+                    :label "Cake Flavor" ;
+                    
+                    :id "cakeFlavor" ;
+                    
+                    :order "3" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#select-frosting-flavor
+
+:select-frosting-flavor rdf:type :select ,
+                                 owl:NamedIndividual ;
+                        
+                        :id "frostingFlavor" ;
+                        
+                        :list """{'choclate':'Choclate','vanilla':'Vanilla'}
+""" ;
+                        
+                        :order "4" ;
+                        
+                        :label "Frosting Flavor" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#select-state
+
+:select-state rdf:type :select ,
+                       owl:NamedIndividual ;
+              
+              :label "State" ;
+              
+              :order "4" ;
+              
+              :list "{'AL':'Alabama','AK':'Alaska','AZ':'Arizona','AR':'Arkansas','CA':'California','CO':'Colorado','CT':'Connecticut','DC':'District of Columbia','DE':'Delaware','FL':'Florida','GA':'Georgia','HI':'Hawaii','ID':'Idaho','IL':'Illinois','IN':'Indiana','IA':'Iowa','KS':'Kansas','KY':'Kentucky','LA':'Louisiana','ME':'Maine','MD':'Maryland','MA':'Massachusetts','MI':'Michigan','MN':'Minnesota','MS':'Mississippi','MO':'Missouri','MT':'Montana','NE':'Nebraska','NV':'Nevada','NH':'New Hampshire','NJ':'New Jersey','NM':'New Mexico','NY':'New York','NC':'North Carolina','ND':'North Dakota','OH':'Ohio','OK':'Oklahoma','OR':'Oregon','PA':'Pennsylvania','PR':'Puerto Rico','RI':'Rhode Island','SC':'South Carolina','SD':'South Dakota','TN':'Tennessee','TX':'Texas','UT':'Utah','VT':'Vermont','VA':'Virginia','WA':'Washington','WV':'West Virginia','WI':'Wisconsin','WY':'Wyoming'}" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#submit-order
+
+:submit-order rdf:type :submit ,
+                       owl:NamedIndividual ;
+              
+              :value "Submit Order" ;
+              
+              :id "submitButton" ;
+              
+              :hasEvent :clickEvent .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#tel-telephoneNumber
+
+:tel-telephoneNumber rdf:type :tel ,
+                              owl:NamedIndividual ;
+                     
+                     :label "Telephone number" ;
+                     
+                     :placeholder "(425) 333-4444" ;
+                     
+                     :order "7" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#text-address
+
+:text-address rdf:type :text ,
+                       owl:NamedIndividual ;
+              
+              :placeholder "1 Microsoft Way" ;
+              
+              :label "Address" ;
+              
+              :order "2" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#text-cake-message
+
+:text-cake-message rdf:type :text ,
+                            owl:NamedIndividual ;
+                   
+                   :id "cakeMessage" ;
+                   
+                   :label "Cake Message" ;
+                   
+                   :list "#datalist-messages" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#text-city
+
+:text-city rdf:type :text ,
+                    owl:NamedIndividual ;
+           
+           :order "3" ;
+           
+           :label "City" ;
+           
+           :placeholder "Redmond" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#text-name
+
+:text-name rdf:type :text ,
+                    owl:NamedIndividual ;
+           
+           :label "Name" ;
+           
+           :order "1" ;
+           
+           :placeholder "John Doe" .
+
+
+
+###  http://thesis.12mscsehaq.seecs.edu.pk#textarea-comments
+
+:textarea-comments rdf:type :textarea ,
+                            owl:NamedIndividual ;
+                   
+                   :id "comments" ;
+                   
+                   :label "Other Special Instructions" .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+
