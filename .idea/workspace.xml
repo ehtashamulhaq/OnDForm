@@ -26,61 +26,25 @@
       <file leaf-file-name="OnDForm.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OnDForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="349" column="0" selection-start="13388" selection-end="13388" vertical-scroll-proportion="0.47848538" vertical-offset="5655" max-vertical-offset="6477">
+            <state line="166" column="45" selection-start="6786" selection-end="6786" vertical-scroll-proportion="0.4825688" vertical-offset="2559" max-vertical-offset="7208">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="n3parser.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OnDForm/n3parser.js">
+      <file leaf-file-name="Form Ontology v1.2.owl" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Form Ontology v1.2.owl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="17" selection-start="2991" selection-end="2992" vertical-scroll-proportion="0.0" vertical-offset="1438" max-vertical-offset="8364">
+            <state line="781" column="9" selection-start="18349" selection-end="18349" vertical-scroll-proportion="0.0" vertical-offset="13277" max-vertical-offset="25398">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="n3store.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/n3store.js">
+      <file leaf-file-name="Form Ontology v1.1.owl" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OnDForm/Form Ontology v1.1.owl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="7" selection-start="4175" selection-end="4175" vertical-scroll-proportion="0.0" vertical-offset="1904" max-vertical-offset="3910">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cake.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cake.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="58" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="782">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery-2.1.0.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jquery-2.1.0.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="282" column="41" selection-start="7059" selection-end="7059" vertical-scroll-proportion="0.0" vertical-offset="4794" max-vertical-offset="154989">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sample-ontology.ttl" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sample-ontology.ttl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="24" selection-start="807" selection-end="807" vertical-scroll-proportion="0.0" vertical-offset="303" max-vertical-offset="7599">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="file.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/file.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="527">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="22117">
               <folding />
             </state>
           </provider>
@@ -101,6 +65,7 @@
         <option value="$PROJECT_DIR$/file.html" />
         <option value="$PROJECT_DIR$/sample-ontology.ttl" />
         <option value="$PROJECT_DIR$/jsonform.js" />
+        <option value="$PROJECT_DIR$/Form Ontology v1.2.owl" />
         <option value="$PROJECT_DIR$/OnDForm.js" />
       </list>
     </option>
@@ -108,8 +73,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1378" />
-    <option name="height" value="780" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -163,11 +128,19 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/file.html" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/file.html" />
     <property name="FullScreen" value="false" />
   </component>
   <component name="RunManager" selected="JavaScript Debug.test.html">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -176,14 +149,6 @@
       <option name="saveOutputToFile" value="false" />
       <option name="showConsoleOnStdErr" value="false" />
       <option name="showConsoleOnStdOut" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
@@ -231,16 +196,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="780" extended-state="1" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.003215434" sideWeight="0.4996277" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0034129692" sideWeight="0.4996277" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12546676" sideWeight="0.6028939" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21444528" sideWeight="0.6023891" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12546676" sideWeight="0.39389068" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21444528" sideWeight="0.39419794" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14846416" sideWeight="0.5003723" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -267,16 +232,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/jquery.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5865" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/n3lexer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5202" />
@@ -302,51 +257,9 @@
         <state line="1331" column="0" selection-start="30435" selection-end="30435" vertical-scroll-proportion="0.6304348" vertical-offset="22337" max-vertical-offset="22797" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cake.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="58" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="782">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jquery-2.1.0.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="282" column="41" selection-start="7059" selection-end="7059" vertical-scroll-proportion="0.0" vertical-offset="4794" max-vertical-offset="154785">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jsonform.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1136" column="35" selection-start="45539" selection-end="45539" vertical-scroll-proportion="0.5514706" vertical-offset="19012" max-vertical-offset="61149">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sample-ontology.ttl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="24" selection-start="807" selection-end="807" vertical-scroll-proportion="0.0" vertical-offset="303" max-vertical-offset="7599">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/n3store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="7" selection-start="4175" selection-end="4175" vertical-scroll-proportion="0.0" vertical-offset="3264" max-vertical-offset="3893">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OnDForm/n3parser.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="17" selection-start="2991" selection-end="2992" vertical-scroll-proportion="0.0" vertical-offset="1438" max-vertical-offset="8364">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/file.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="527">
           <folding />
         </state>
       </provider>
@@ -356,9 +269,63 @@
         <state line="1514" column="23" selection-start="24183" selection-end="24183" vertical-scroll-proportion="0.33213645" vertical-offset="25553" max-vertical-offset="64651" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/OnDForm/n3parser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="17" selection-start="2991" selection-end="2992" vertical-scroll-proportion="0.2979798" vertical-offset="1438" max-vertical-offset="8364">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/n3store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="7" selection-start="4175" selection-end="4175" vertical-scroll-proportion="-0.028619528" vertical-offset="1904" max-vertical-offset="3893">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cake.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="58" selection-start="486" selection-end="486" vertical-scroll-proportion="0.21441442" vertical-offset="17" max-vertical-offset="782" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jquery-2.1.0.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="282" column="41" selection-start="7059" selection-end="7059" vertical-scroll-proportion="-0.35111877" vertical-offset="4794" max-vertical-offset="154785">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample-ontology.ttl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="24" selection-start="807" selection-end="807" vertical-scroll-proportion="0.29776248" vertical-offset="303" max-vertical-offset="7599">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/file.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="15" selection-end="15" vertical-scroll-proportion="0.089788735" vertical-offset="0" max-vertical-offset="568">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OnDForm/Form Ontology v1.1.owl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="22117">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Form Ontology v1.2.owl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="781" column="9" selection-start="18349" selection-end="18349" vertical-scroll-proportion="0.0" vertical-offset="13277" max-vertical-offset="25398">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/OnDForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="349" column="0" selection-start="13388" selection-end="13388" vertical-scroll-proportion="0.47848538" vertical-offset="5655" max-vertical-offset="6477">
+        <state line="166" column="45" selection-start="6786" selection-end="6786" vertical-scroll-proportion="0.4825688" vertical-offset="2559" max-vertical-offset="7208">
           <folding />
         </state>
       </provider>

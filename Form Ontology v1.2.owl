@@ -1084,7 +1084,7 @@
 
 ###  http://thesis.12mscsehaq.seecs.edu.pk#clickEvent
 
-:clickEvent rdf:type :onclick ,
+:clickEvent rdf:type :onchange ,
                      owl:NamedIndividual ;
             
             :hasHandler :clickEventHandler .
@@ -1470,12 +1470,12 @@
 
 ###  http://thesis.12mscsehaq.seecs.edu.pk#updateCityElementData
 
-:updateCityElementData rdf:type :changeData ,
+:updateCityElementData rdf:type :changeState ,
                                 owl:NamedIndividual ;
                        
-                       :propertyName "list" ;
+                       :propertyName "readonly" ;
                        
-                       :propertyValue "{'LHR':'Lahore','ISB':'Islamabad','KHI':'Karachi'}" ;
+                       :propertyValue "true" ;
                        
                        :targetElement :select-city .
 

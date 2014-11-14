@@ -164,6 +164,10 @@ OnDForm.prototype.createForm = function (target) {
         if (element.type == "form") {
             var myform = generateForm(element);
             target.append(myform);
+            myform.submit(function( event ) {
+                var formDataStore = new N3Store();
+                event.preventDefault();
+            });
         } else if (element.type == "text/javascript") {
             var scriptElement = $('<script/>');
             for (var key in element) {
@@ -313,7 +317,8 @@ function addElement(subjectName) {
 
     if (getElementByName(elementName).length > 0) {
         removeElement(subjectName);
-    } else {
+    }
+
         var memberOf = store.find(subjectName, myRef.prefix + '#memberOf');
         var memberOfElement = $('[name=\'' + memberOf[0].object + '\']');
         var element = generateForm(myRef.getElement(elementName));
@@ -321,7 +326,6 @@ function addElement(subjectName) {
         element = getElementByName(elementName);
         ;
         $("<label>" + element.attr("label") + "</label>").insertBefore(element);
-    }
 
 }
 
@@ -333,8 +337,17 @@ function removeElement(subjectName) {
     if (element.length > 0) {
         var label = element.attr("label");
         if (label) {
-            var labelElement = element.closest('label=' + label);
-            labelElement.remove();
+            var labelElement = $('label[for="'+$(element).attr('id')+'"]');
+
+            if(labelElement.length <= 0) {
+                var parentElem = $(element).prev();
+                parentTagName = parentElem.get(0).tagName.toLowerCase();
+
+                if(parentTagName == "label") {
+                    labelElement = parentElem;
+                    labelElement.remove();
+                }
+            }
         }
 
         element.remove();
@@ -344,8 +357,19 @@ function removeElement(subjectName) {
 function changeCss(subjectName) {
     var elementName = getElementNameFromSubject(subjectName);
     var element = getElementByName(elementName);
-    var elementId, memberOf, cssMap;
 
+    var propertyName = store.find(subjectName, myRef.prefix + '#propertyName');
+    var propertyValue = store.find(subjectName, myRef.prefix + '#propertyValue');
+
+    var cssProperty = (propertyName[0]!=null?propertyName[0].object:'');
+    var cssValue = (propertyValue[0]!=null?propertyValue[0].object:'');
+
+    if(cssProperty.length > 2 && cssValue.length > 2){
+        cssProperty = cssProperty.substring(1, cssProperty.length - 1);
+        cssValue = cssValue.substring(1, cssValue.length - 1);
+
+        element.css(cssProperty, cssValue);
+    }
 }
 
 function changeData(subjectName) {
@@ -353,15 +377,23 @@ function changeData(subjectName) {
     var element = getElementByName(elementName);
 
     var propertyName = store.find(subjectName, myRef.prefix + '#propertyName');
-    var propertyValue = store.find(subjectName, myRef.prefix + '#propertyValue')
+    var propertyValue = store.find(subjectName, myRef.prefix + '#propertyValue');
 
-    alert(propertyName.object);
+    var key = (propertyName[0]!=null?propertyName[0].object:'');
+    if(key.length > 2){
+        key = key.substring(1, key.length - 1);
+    }
 
     if (element.is("select") && key == "list") {
-        var strList = element[key].replace(/['"]/g, '\"');
+        //var strList = element[key].replace(/['"]/g, '\"');
+        var strList = (propertyValue[0]!=null?propertyValue[0].object:'');
+        if(strList.length > 2){
+            strList = strList.substring(1, strList.length - 1);
+        }
+        strList = strList.replace(/['"]/g, '\"');
         var jsonList = $.parseJSON(strList);
         $.each(jsonList, function (index, value) {
-            jqElement.append($("<option/>").attr("value", index).append(value));
+            element.append($("<option/>").attr("value", index).append(value));
         });
     }
     var elementId, memberOf, dataMap;
@@ -371,6 +403,17 @@ function changeData(subjectName) {
 function changeState(subjectName) {
     var elementName = getElementNameFromSubject(subjectName);
     var element = getElementByName(elementName);
-    var elementId, memberOf, stateMap;
 
+    var propertyName = store.find(subjectName, myRef.prefix + '#propertyName');
+    var propertyValue = store.find(subjectName, myRef.prefix + '#propertyValue');
+
+    var elemProperty = (propertyName[0]!=null?propertyName[0].object:'');
+    var elemValue = (propertyValue[0]!=null?propertyValue[0].object:'');
+
+    if(elemProperty.length > 2 && elemValue.length > 2){
+        elemProperty = elemProperty.substring(1, elemProperty.length - 1);
+        elemValue = elemValue.substring(1, elemValue.length - 1);
+
+        element.attr(elemProperty, elemValue);
+    }
 }
