@@ -166,7 +166,30 @@ OnDForm.prototype.createForm = function (target) {
             target.append(myform);
             myform.submit(function( event ) {
                 var formDataStore = new N3Store();
+                var formObj = event.target;
+                var postData = $(formObj).serializeArray();
+                var formURL = $(formObj).attr("action");
+
+                $.each(postData, function( index, obj ) {
+                    formDataStore.add(obj.name, "rdf:value", obj.value);
+                });
+
+                $.ajax(
+                    {
+                        url : formURL,
+                        type: "POST",
+                        data : formDataStore,
+                        success:function(data, textStatus, jqXHR)
+                        {
+                            //data: return data from server
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            //if fails
+                        }
+                    });
                 event.preventDefault();
+                // event.unbind() //to prevent duplicate submit
             });
         } else if (element.type == "text/javascript") {
             var scriptElement = $('<script/>');
